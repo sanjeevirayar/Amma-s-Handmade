@@ -1,0 +1,57 @@
+:root {
+    /* MAIN CANVAS */
+    --cream: #fbf6f0;
+    --soft-cream: #f1ebe3;
+    --white: #fffdf9;
+
+    /* SAGE */
+    --sage: #899476;
+    --sage-dark: #6e7a58;
+    --sage-soft: #dce2d6;
+    --sage-muted: #d4d6c8;
+    --sage-deep: #68745c;
+
+    /* WARM ACCENTS */
+    --blush: #f0d4d3;
+    --terracotta: #c15a49;
+    --coral: #c86a5a;
+    --mustard: #dfa94f;
+
+    /* TEXT / FOOTER */
+    --brown: #5f3e2f;
+    --brown-dark: #493023;
+    --text-muted: #8b7769;
+
+    /* UI */
+    --border: rgba(95, 62, 47, 0.12);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    background: var(--cream);
+    color: var(--brown);
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+.container {
+    width: min(1280px, calc(100% - 48px));
+    margin-inline: auto;
+}
