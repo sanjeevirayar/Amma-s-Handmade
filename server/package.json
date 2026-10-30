@@ -1,22 +1,28 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "node --watch src/index.js",
-    "start": "node src/index.js",
-    "seed": "node src/scripts/seedProducts.js"
-  },
+  "description": "Backend API for Amma's Handmade",
+  "main": "src/index.js",
+  "type": "module",
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "start": "node server/src/index.js",
+  "postinstall": "npm --prefix server install && npm run build"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "dotenv": "^18.0.9",
     "express": "^5.2.1",
     "mongoose": "^9.11.4",
     "razorpay": "^2.9.8",
     "resend": "^6.35.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }

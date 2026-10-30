@@ -1,5 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import connectDB
     from "./config/db.js";
@@ -29,6 +31,21 @@ const PORT =
     process.env.PORT ||
     3001;
 
+const __filename =
+    fileURLToPath(
+        import.meta.url
+    );
+
+const __dirname =
+    path.dirname(
+        __filename
+    );
+
+const frontendDistPath =
+    path.resolve(
+        __dirname,
+        "../../dist"
+    );
 
 /* =====================================================
    DATABASE
@@ -99,6 +116,47 @@ app.use(
 app.use(
     "/api/payments",
     paymentRoutes
+);
+
+/* =====================================================
+   SERVE REACT FRONTEND
+===================================================== */
+
+app.use(
+    express.static(
+        frontendDistPath
+    )
+);
+
+
+/* =====================================================
+   REACT ROUTER FALLBACK
+
+   Any normal GET request that is not /api/*
+   should return React's index.html.
+===================================================== */
+
+app.use(
+    (req, res, next) => {
+
+        if (
+            req.method !== "GET" ||
+            req.path.startsWith("/api/")
+        ) {
+
+            return next();
+
+        }
+
+
+        return res.sendFile(
+            path.join(
+                frontendDistPath,
+                "index.html"
+            )
+        );
+
+    }
 );
 
 /* =====================================================
